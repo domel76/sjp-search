@@ -1,0 +1,22 @@
+{
+  "name": "sjp-search-cloudflare",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lokalne źródła strony SJP Search i jej proxy na Cloudflare Workers.",
+  "scripts": {
+    "dev:site": "wrangler dev --config apps/site/wrangler.jsonc",
+    "dev:proxy": "wrangler dev --config apps/proxy/wrangler.jsonc",
+    "check:site": "wrangler deploy --config apps/site/wrangler.jsonc --dry-run --outdir .wrangler/site",
+    "check:proxy": "wrangler deploy --config apps/proxy/wrangler.jsonc --dry-run --outdir .wrangler/proxy",
+    "check": "npm run check:proxy && npm run check:site",
+    "deploy:proxy": "wrangler deploy --config apps/proxy/wrangler.jsonc",
+    "deploy:site": "wrangler deploy --config apps/site/wrangler.jsonc",
+    "deploy": "npm run deploy:proxy && npm run deploy:site"
+  },
+  "devDependencies": {
+    "wrangler": "4.137.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
